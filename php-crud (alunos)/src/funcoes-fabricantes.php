@@ -1,12 +1,14 @@
 <?php
     // Incluir neste ponto o arquivo conecta.php 
     require_once "conecta.php";
-    
+
+    // _______________________
+
     // Programar a função lerFabricantes neste ponto
     function lerFabricantes(PDO $conexao):array {
-        // String com o comando SQL
+        // String com comando SQL
         $sql = "SELECT id, nome FROM fabricantes";
-            try{
+            try {
                 // preparação do comando
                 $consulta = $conexao->prepare($sql);
 
@@ -14,24 +16,25 @@
                 $consulta->execute();
 
                 // capturar os resultados
-                $resultado = $consulta->fetchALL(PDO::FETCH_ASSOC);
+                $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
             } catch (Exception $erro) {
-                die("Erro" .$erro->getMessage());
+                die ("Erro" .$erro->getMessage());
             }
             return $resultado;
     }
-    
+    // _______________________
+
     // Inserir um fabricante (PDO - PHP Database Object)
     // Obs void indica que a função não tem retorno "return"
 
     // Programar a função inserirFabricante neste ponto
-    function inserirFabricante(PDO $conexao, string $nome): void {
+    function inserirFabricantes(PDO $conexao, string $nome):void {
 
-        // Insere no Banco de dados o valor digitado pelo usuário no formulário armazenado na variável $some
+        // Inserir no Banco de daos o valor digitado pelo usuário no formulário armazenado na variável $nome
         // Obs Não é necessário criar para o ID que é automático
 
         // :qualquer_coisa -> isso é um named parameter
-        $sql = "INSERT INTO fabricantes(nome) VALUE(:nome)";
+        $sql = "INSERT INTO fabricantes(nome) VALUES(:nome)";
         try {
             $consulta = $conexao->prepare($sql);
 
@@ -39,51 +42,54 @@
             $consulta->bindParam(':nome', $nome, PDO::PARAM_STR);
             $consulta->execute();
 
-        } catch (Exception $erro){
+        } catch(Exception $erro){
             die("Erro: ".$erro->getMessage());
         }
     }
+    // _______________________
     
     // Programar a função lerUmFabricante neste ponto
     function lerUmFabricante(PDO $conexao, int $id):array {
-        $sql = "SELECT id, nome FROM fabricantes WHERE id = :id";
+        $sql = "SELECT id, nome  From fabricantes WHERE id = :id";
         try {
             $consulta = $conexao->prepare($sql);
             $consulta->bindParam(':id', $id, PDO::PARAM_INT);
             $consulta->execute();
-            // Aqui usado fetch por que é apenas 1 fabricantes
-            $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
+            // Aqui usado fetch porque é apenas 1 fabricante
+            $resultado  = $consulta->fetch(PDO::FETCH_ASSOC);
 
-        } catch (Exception $erro) {
-            die ("Erro: ".$erro->getMessage());
+        } catch (Exception $erro ){
+            die ("Erro" .$erro->getMessage());
         }
         return $resultado;
+
     }
-    
+    // _______________________
+
     // Programar a função atualizarFabricante neste ponto
     function atualizarFabricante(PDO $conexao, int $id, string $nome):void {
-        $sql = "UPDATE fabricantes SET nome = :nome WHERE id = :id ";
+        $sql = "UPDATE fabricantes SET nome = :nome WHERE id = :id";
         try {
             $consulta = $conexao->prepare($sql);
             $consulta->bindParam(':id', $id, PDO::PARAM_INT);
             $consulta->bindParam(':nome', $nome, PDO::PARAM_STR);
             $consulta->execute();
 
-        } catch (Exception $erro) {
-            die("Erro: ".$erro->getMessage());
+        } catch (Exception $erro ){
+            die ("Erro" .$erro->getMessage());
         }
     }
-    
+    // _______________________
+
     // Programar a função excluirFabricante neste ponto
-    function excluirFabricante(PDO $conexao, int $id): void {
-        $sql = "DELETE FROM fabricantes WHERE id = :id ";
+    function excluirFabricante(PDO $conexao, int $id):void {
+        $sql = "DELETE FROM fabricantes WHERE id = :id";
         try {
             $consulta = $conexao->prepare($sql);
             $consulta->bindParam(':id', $id, PDO::PARAM_INT);
             $consulta->execute();
 
-        } catch (Exception $erro){
-            die("Erro: ".$erro->getMessage());
+        } catch (Exception $erro ){
+            die ("Erro" .$erro->getMessage());
         }
     }
-    
