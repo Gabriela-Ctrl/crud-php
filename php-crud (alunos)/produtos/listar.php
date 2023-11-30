@@ -36,14 +36,14 @@
 
         <div class="produtos">
             <!-- laço para exibir os produtos cadastrados disponiveis -->
-            <?php foreach($listaDeProdutos as $produto){ ?>
+            <?php foreach($listaDeProdutos as $produto) { ?>
 
                 <article>
                     <!-- Quando somente o id do fabricante (Antigo) -->
                     <!-- <h3> <?=$produto['nome']?> </h3>-->
 
                     <!-- Quando traz o nome do fabricante (ATUAL) -->
-                    <h3><?=$produto['produto']?></h3>
+                    <h3><?=$produto['produto']?> </h3>
 
                     <!-- Formatação direto no codifo(Antigo) -->
                     <!-- <p><b>Preço:</b> <?=number_format($produto['preco'], 2, ",", ".")?></p> -->
@@ -65,14 +65,14 @@
                     <!-- Link dinâmico -->
                     <p>
                         <a href="atualizar.php?id=<?=$produto['id']?>" style="color:blue;"><button type="button" class="btn btn-success">Atualizar</button></a>
-                        <a class="excluir" href="excluir.php?id=<?=$produto['fabricante']?>" style="color:red;"><button type="button" class="btn btn-danger">excluir</button></a>
+                        <a class="excluir" href="excluir.php?id=<?=$produto['fabricante']?>" style="color:red;"><button type="button" class="btn btn-danger">Excluir</button></a>
                     </p>
 
                     <hr>
                 </article>
             <?php } ?>
         </div>
-        <p><a href="../index.html"><button type="submit" class="btn btn-warning">Home</button></a></p>
+       
     </div>
 
     <!-- Chamado arquivo JS paraperguntar antes de excluir -->

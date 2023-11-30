@@ -22,7 +22,7 @@
         $fabricanteID = filter_input(INPUT_POST. 'fabricante', FILTER_SANITIZE_NUMBER_INT);
 
         // Chamando a função e passando os dados de conexão e o nome digitado
-        atualizarProduto($conexao, $id, $nome, $descricao, $preco, $quantidade, $fabrincantesId);
+        atualizarProduto($conexao, $id, $nome, $preco, $quantidade, $descricao, $fabrincantesId);
 
         // Redirecionamento (Nada a ver com a Tag do HTML)
         header("location:listar.php");
@@ -61,7 +61,7 @@
                 </p>
 
                 <p>
-                    <label for="fabricante">fabricante:</label>
+                    <label for="fabricante">Fabricante:</label>
                     <select name="fabricante" id="fabricante">
 
                         <option value=""></option>
@@ -71,7 +71,7 @@
                         ?>
 
                             <option 
-                                <?php if ($produto['fabricante_id'] === $fabricante['id']) echo " Selected ";?>
+                                <?php if ($produto['fabricante_id'] === $fabricante['id']) echo " selected ";?>
                                 value="<?=$fabricante['id']?>"> <!-- Para o banco -->
                                 <?=$fabricante['nome']?> <!-- Exibição no Front -->
                         
@@ -80,7 +80,7 @@
                     </select>
                 </p>
                 <p>
-                    <label for="descricao">Descrição:</label><br>
+                    <label for="descricao">descrição:</label><br>
                     <textarea required name="descricao" id="descricao" cols="30" rows="3"><?=$produto['descricao']?></textarea>
                 </p>
                 <button type="submit" name="atualizar">Atualizar Produto</button>

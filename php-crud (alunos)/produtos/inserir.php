@@ -38,22 +38,22 @@
 
             <form action="" method="POST">
                 <p>
-                    <label for="nome">nome:</label>
+                    <label for="nome">Nome:</label>
                     <input type="text" name="nome" id="nome" required>
                 </p>
 
                 <p>
-                    <label for="preco">preço:</label>
+                    <label for="preco">Preço:</label>
                     <input type="number" name="preco" id="preco" min="0" max="100000" step="0.01" required>
                 </p>
 
                 <p>
-                    <label for="quantidade">quantidade:</label>
+                    <label for="quantidade">Quantidade:</label>
                     <input type="number" name="quantidade" id="quantidade"  min="0" max="100" required>
                 </p>
 
                 <p>
-                    <label for="fabricante">fabricante:</label>
+                    <label for="fabricante">Fabricante:</label>
                     <select name="fabricante" id="fabricante">
 
                         <option value=""></option>
@@ -63,21 +63,21 @@
                         ?>
 
                             <option value="<?=$fabricante['id']?>"> <!-- Para o banco -->
-                            <?=$fabricante['id']?> <!-- Exibição no Front -->
+                            <?=$fabricante['nome']?> <!-- Exibição no Front -->
                         
                             </option>
                         <?php } ?>
                     </select>
                 </p>
                 <p>
-                    <label for="descricao">Descrição:</label><br>
-                    <textarea name="descricao" id="descricao" cols="30" rows="3"></textarea>
+                    <label for="descricao">descrição:</label><br>
+                    <textarea required name="descricao" id="descricao" cols="30" rows="3"></textarea>
                 </p>
-                <button type="submit" name="inserir">inserir Produto</button>
+                <button type="submit" name="inserir">Inserir produto</button>
             </form>
         </div>
 
-        <p><a href="listar.php">Voltar para a Lista de Produtos</a></p>
+        <p><a href="listar.php">Voltar para a lista de produtos</a></p>
         <p><a href="../index.html">Home</a></p>
 
     </body>

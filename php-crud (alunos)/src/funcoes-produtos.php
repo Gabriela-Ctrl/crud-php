@@ -45,9 +45,9 @@
             $consulta = $conexao->prepare($sql);
 
             $consulta->bindParam(':nome', $nome, PDO::PARAM_STR);       
-            $consulta->bindParam(':preco', $preco, PDO::PARAM_INT);
+            $consulta->bindParam(':preco', $preco, PDO::PARAM_STR);
             $consulta->bindParam(':quantidade', $quantidade, PDO::PARAM_INT);
-            $consulta->bindParam(':descricao', $descricao, PDO::PARAM_INT);
+            $consulta->bindParam(':descricao', $descricao, PDO::PARAM_STR);
             $consulta->bindParam(':fabricante_id', $fabricanteId, PDO::PARAM_INT);
             
             // Execução do comando
@@ -61,7 +61,7 @@
 
     // Programar a função lerUmProduto neste ponto 
     function lerUmProduto(PDO $conexao, int $id):array {
-        $sql = "SELECT id, nome, preco, quantidade, descricao, fabricante_id  From produtos WHERE id = :id";
+        $sql = "SELECT id, nome, preco, quantidade, descricao, fabricante_id  FROM produtos WHERE id = :id";
         
         try {
             // preparação do comando
@@ -88,11 +88,11 @@
         try {
             $consulta = $conexao->prepare($sql);
 
-            $consulta->bindParam(':id', $id, PDO::PARAM_INT);
+            $consulta->bindParam(':id', $id, PDO::PARAM_STR);
             $consulta->bindParam(':nome', $nome, PDO::PARAM_STR);
-            $consulta->bindParam(':preco', $preco, PDO::PARAM_INT);
+            $consulta->bindParam(':preco', $preco, PDO::PARAM_STR);
             $consulta->bindParam(':quantidade', $quantidade, PDO::PARAM_INT);
-            $consulta->bindParam(':descricao', $descricao, PDO::PARAM_INT);
+            $consulta->bindParam(':descricao', $descricao, PDO::PARAM_STR);
             $consulta->bindParam(':fabricante_id', $fabricanteId, PDO::PARAM_INT);
                         
             // Execução do comando
@@ -123,6 +123,6 @@
         echo"<pre>";
     }
 
-    function formataMoeda(float $valor):string{
+    function formataMoeda(float $valor):string {
         return "R$ " .number_format($valor, 2, ",", ".");
     }
